@@ -1,27 +1,29 @@
 # Cloud Format Converter
 
-A Python tool to convert between Terraform and CloudFormation formats. This tool supports bidirectional conversion with full support for variables, outputs, dependencies, and provider configurations.
+A Python tool to convert between Terraform (HCL) and CloudFormation (YAML/JSON) formats. This tool supports bidirectional conversion with full support for variables, outputs, dependencies, and provider configurations.
 
 ## Features
 
 - Convert Terraform (HCL) to CloudFormation (YAML/JSON)
 - Convert CloudFormation to Terraform
-- Support for variables and parameters
-- Support for output values
-- Handle dependencies and references
-- Provider-specific configurations
-- Rich resource type mappings
-- Template validation
+- Support for:
+  - Variables and parameters
+  - Output values
+  - Dependencies and references
+  - Provider-specific configurations
+  - Rich resource type mappings
+  - Template validation
 
 ## Installation
 
 ```bash
-# Clone the repository
-git clone https://github.com/yourusername/cloud-format-converter
-cd cloud-format-converter
+# From PyPI (when published)
+pip install cloud-format-converter
 
-# Install in development mode
-pip install -e .
+# From source
+git clone https://github.com/brokosz/cloud-format-converter.git
+cd cloud-format-converter
+pip install -e ".[dev]"
 ```
 
 ## Usage
@@ -30,7 +32,7 @@ pip install -e .
 
 1. Convert Terraform to CloudFormation:
 ```bash
-cloud-format convert main.tf template.yaml
+cloud-format convert input.tf output.yaml
 ```
 
 2. Convert CloudFormation to Terraform:
@@ -40,12 +42,12 @@ cloud-format convert template.yaml output.tf --format tf
 
 3. Convert and output as JSON:
 ```bash
-cloud-format convert main.tf template.json --output-format json
+cloud-format convert input.tf template.json --output-format json
 ```
 
 4. Validate a template:
 ```bash
-cloud-format convert validate template.yaml --type cloudformation
+cloud-format validate template.yaml --type cloudformation
 ```
 
 5. Use with pipes:
@@ -96,10 +98,28 @@ flake8 src tests
 black src tests
 ```
 
+### Adding New Resource Types
+
+To add support for new AWS resource types:
+
+1. Add the mapping to `resource_type_mappings` in `converter.py`:
+```python
+self.resource_type_mappings = {
+    "AWS::NewService::Resource": "aws_new_service_resource",
+    # ...
+}
+```
+
+2. Add any necessary property transformations in the conversion methods.
+
 ## Contributing
 
 1. Fork the repository
-2. Create a new branch for your feature
+2. Create a feature branch:
+```bash
+git checkout -b feature/new-feature
+```
+
 3. Make your changes
 4. Run tests and linting
 5. Submit a pull request
@@ -107,3 +127,14 @@ black src tests
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Support
+
+- For bugs and features, please create an issue in the GitHub repository
+- For security issues, please see SECURITY.md
+- For general questions, please use GitHub Discussions
+
+## Acknowledgments
+
+- Thanks to the Python community for great tools like `python-hcl2` and `pyyaml`
+- Inspired by the need to maintain infrastructure as code in multi-tool environments

@@ -3,18 +3,19 @@ from setuptools import setup, find_packages
 setup(
     name="cloud-format-converter",
     version="1.0.0",
-    packages=find_packages(),
+    packages=find_packages(where="src"),
+    package_dir={"": "src"},
     install_requires=[
         "pyyaml>=5.1",
         "python-hcl2>=2.0",
     ],
     entry_points={
         "console_scripts": [
-            "cloud-format=cloud_format_cli:CloudFormatCLI().run",
+            "cloud-format=cloud_format_converter.cli:main",
         ],
     },
-    author="Your Name",
-    author_email="your.email@example.com",
+    author="Brad Rokosz",
+    author_email="br@omg.lol",
     description="A tool to convert between Terraform and CloudFormation formats",
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
