@@ -489,3 +489,4 @@ class CloudFormatConverter:
             return True
         except Exception as e:
             raise ValueError(f"Validation failed: {str(e)}")
+            
