@@ -340,7 +340,7 @@ class CloudFormatConverter:
     def _convert_select(self, params: List) -> str:
         """Convert Fn::Select to Terraform format"""
         index, array = params
-        return f"${{element({json.dumps(array)}, {index})}"
+        return f"${{element({json.dumps(array)}, {index})}}"
 
     def _convert_condition(self, condition_name: str) -> str:
         """Convert Condition to Terraform format"""
