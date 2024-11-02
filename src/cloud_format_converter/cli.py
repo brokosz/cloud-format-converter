@@ -6,7 +6,7 @@ import json
 import yaml
 from pathlib import Path
 from typing import Optional, Union
-from cloud_format_converter import CloudFormatConverter  # Import the previous converter class
+from cloud_format_converter.converter import CloudFormatConverter
 
 
 class CloudFormatCLI:
