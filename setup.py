@@ -1,8 +1,8 @@
 from setuptools import setup, find_packages
 import os
 
-# Read README.md if it exists
-long_description = ""
+# Use a default description if README.md is missing
+long_description = "A Python tool to convert between Terraform and CloudFormation formats."
 if os.path.exists("README.md"):
     with open("README.md", "r", encoding="utf-8") as fh:
         long_description = fh.read()
@@ -24,9 +24,9 @@ setup(
     author="Brad Rokosz",
     author_email="br@omg.lol",
     description="A tool to convert between Terraform and CloudFormation formats",
-    long_description=open("README.md").read(),
+    long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/yourusername/cloud-format-converter",
+    url="https://github.com/brokosz/cloud-format-converter",
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
