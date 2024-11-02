@@ -306,7 +306,7 @@ class CloudFormatConverter:
     def _convert_join(self, params: List) -> str:
         """Convert Fn::Join to Terraform format"""
         delimiter, items = params
-        return f"${{join(\"{delimiter}\", {json.dumps(items)})}"
+        return f"${{join('{delimiter}', {json.dumps(items)})}}"
 
     def _convert_sub(self, params: Union[str, List]) -> str:
         """Convert Fn::Sub to Terraform format"""
