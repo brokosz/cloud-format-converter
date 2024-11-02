@@ -47,3 +47,7 @@ build/
 # Local development
 .env
 .env.local
+.DS_Store
+._.DS_Store
+**/.DS_Store
+**/._.DS_Store
