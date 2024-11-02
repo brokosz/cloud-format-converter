@@ -344,7 +344,7 @@ class CloudFormatConverter:
 
     def _convert_condition(self, condition_name: str) -> str:
         """Convert Condition to Terraform format"""
-        return f"${{var.{condition_name}}"
+        return f"${{var.{condition_name}}}"
 
     def _convert_to_cf_join(self, tf_expression: str) -> Dict:
         """Convert Terraform join to Fn::Join"""
