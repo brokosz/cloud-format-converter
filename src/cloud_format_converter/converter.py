@@ -335,7 +335,7 @@ class CloudFormatConverter:
     def _convert_get_att(self, params: List) -> str:
         """Convert Fn::GetAtt to Terraform format"""
         resource_name, attribute = params
-        return f"${{aws_{resource_name.lower()}.{attribute.lower()}}"
+        return f"${{aws_{resource_name.lower()}.{attribute.lower()}}}"
 
     def _convert_select(self, params: List) -> str:
         """Convert Fn::Select to Terraform format"""
